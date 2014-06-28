@@ -2,16 +2,17 @@
 
 
 if((isset($_GET))){
-	//header('Location: /home.php');
-	require_once('home.php');
+	header('Location: home.php');
 }
 
-if($_GET['pag'] == 'empresa'){
-	require_once('empresa.php');
-}
+if($_GET['pag'] == 'home'){
+	
+	header('Location: home.php');
 
-if($_GET['pag'] == 'produtos'){
-	require_once('produtos.php');
+}elseif($_GET['pag'] == 'empresa'){
+	
+	header('Location: empresa.php');
+	
 }
 
 
