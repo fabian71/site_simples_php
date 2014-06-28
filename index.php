@@ -27,7 +27,13 @@ elseif($_GET['pag'] == 'contato'){
 	header('Location: contato.php');
 	
 }else{
-	header('Location: 404.php');
+	//header("HTTP/1.0 404 Not Found");
+	
+	header('HTTP/1.0 404 Not Found');
+    echo "<h1>OPS! 404 </h1>";
+    echo "Desculpe, mas n&atilde;o foi poss&iacute;vel encontrar a p&aacute;gina que voc&ecirc; solicitou.";
+    exit();	
+	//header('Location: 404.php');
 }
 
 
