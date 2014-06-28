@@ -1,1 +1,1 @@
-<p>&copy; Todos os direitos reservados - 2014</p>
+<p>&copy; Todos os direitos reservados - <?php echo date('Y',time());?></p>

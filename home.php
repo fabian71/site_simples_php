@@ -69,7 +69,7 @@
       </div>
 
       <div class="footer">
-       <?php require_onde('footer.php'); ?>
+       <?php require_once('footer.php'); ?>
       </div>
 
     </div> <!-- /container -->
