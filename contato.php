@@ -46,7 +46,32 @@
       <div class="row">
       <div class="col-md-8">
       
-<form role="form">
+      <?php
+      	if(isset($_POST)){
+			if($_POST){
+				echo "<div class=\"alert alert-success\" role=\"alert\"> <span class=\"glyphicon glyphicon-thumbs-up\"></span> Dados enviados com sucesso.</div>";
+				
+				echo "<div class=\"panel panel-default\">
+				  <!-- Default panel contents -->
+				  <div class=\"panel-heading\">Abaixo seguem os dados que você enviou:</div>
+				  <div class=\"panel-body\">
+				  <!-- List group -->
+				  <ul class=\"list-group\">
+					<li class=\"list-group-item\"><strong>Nome</strong>: $_POST[nome]</li>
+					<li class=\"list-group-item\"><strong>Email</strong>: $_POST[email]</li>
+					<li class=\"list-group-item\"><strong>Assunto</strong>: $_POST[assunto]</li>
+					<li class=\"list-group-item\"><strong>Comentário</strong>: $_POST[comentario]</li>
+				  </ul>
+				</div>
+				  </div>
+				
+					";
+			}
+			
+		}
+	  ?>
+      
+	<form role="form" method="post">
        <div class="form-group">
         <label for="exampleInputEmail1">Nome</label>
         <input required type="text" class="form-control" name="nome" id="nome" placeholder="Seu nome">
@@ -74,7 +99,7 @@
       </div>
       <div class="col-md-4">      
           <address>
-              <strong>Exemple, Inc.</strong><br>
+              <strong>Site Simples, Inc.</strong><br>
               795 Folsom Ave, Suite 600<br>
               San Francisco, CA 94107<br>
               <abbr title="Phone">P:</abbr> (123) 456-7890
