@@ -5,7 +5,7 @@ if((isset($_GET))){
 	header('Location: home.php');
 }
 
-if($_GET['pag'] == 'home'){
+if(($_GET['pag'] == 'home') OR ($_GET['pag'] == '')){
 	
 	header('Location: home.php');
 
