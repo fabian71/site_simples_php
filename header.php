@@ -1,12 +1,11 @@
 <?php
 
 // Menu geral
-$arrayMenu = array("Home" => "index.php?pag=home",
-				   "Empresa" => "index.php?pag=empresa",
-				   "Produtos" => "index.php?pag=produtos",
-				   "Servi&ccedil;os" => "index.php?pag=servicos",
-				   "Contato" => "index.php?pag=contato"
-
+$arrayMenu = array("Home" => "/",
+				   "Empresa" => "empresa",
+				   "Produtos" => "produtos",
+				   "Servi&ccedil;os" => "servicos",
+				   "Contato" => "contato"
 );
 
 $printMenu = '';
@@ -14,11 +13,13 @@ $printMenu = '';
 foreach ($arrayMenu as $nomeMenu => $linkMenu) {
 
 	$ativo ='';	
-	$linkMenuExploe = explode('index.php?pag=',$linkMenu);
-	if(strstr($_SERVER['REQUEST_URI'], $linkMenuExploe[1])){
-		$ativo = "class=\"active\"";
-	}	
 	
+	if($nomeMenu != 'Home'){
+		if($_SERVER['REQUEST_URI'] == '/'.$linkMenu){
+			$ativo = "class=\"active\"";
+		}
+	}
+
 	$printMenu .= "<li $ativo><a href=\"$linkMenu\">$nomeMenu</a></li>";
 }
 

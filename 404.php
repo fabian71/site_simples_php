@@ -42,35 +42,10 @@
       </div>
 
       <div class="jumbotron">
-        <h1>O primeiro teste</h1>
-        <p class="lead">Aqui esta sento criado o primeiro site para o projeto code.education</p>
-        <p><a class="btn btn-lg btn-success" href="/contato" role="button">Entre em contato</a></p>
+        <h1>OPS! 404</h1>
+        <p class="lead">Desculpe, mas n&atilde;o foi poss&iacute;vel encontrar a p&aacute;gina que voc&ecirc; solicitou.</p>
+
       </div>
-
-      <div class="row marketing">
-        <div class="col-lg-6">
-          <h4>Subheading</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque venenatis porta. Proin eget turpis sed est rutrum sagittis. In id erat vitae metus mollis varius.</p>
-
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-        </div>
-
-        <div class="col-lg-6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-        </div>
-      </div>
-
       <div class="footer">
        <?php require_once('footer.php'); ?>
       </div>
