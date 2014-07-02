@@ -92,6 +92,4 @@ elseif($_GET['pag'] == 'contato'){
     exit();	
 	//header('Location: 404.php');
 }
-
-
 ?>
