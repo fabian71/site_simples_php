@@ -26,8 +26,9 @@ if(!isset($_GET['instalar'])){
 
 	// Verificando se tabela existe
 	$tableExists = $con->query("SHOW TABLES LIKE '$tabela'")->rowCount() > 0;
+
 	
-	if($tableExists){
+	if($tableExists > 0){
 		print("Apagando todos os dados... <br>");
 		//Apagando os dados da tabela
 		$sql = "DELETE FROM $tabela";
@@ -39,14 +40,15 @@ if(!isset($_GET['instalar'])){
 
 		print("Criando a tabela... <br>");
 
+
 		// Criando a tabela
-		$q="CREATE TABLE IF NOT EXISTS $tabela (
+		$q="CREATE TABLE $tabela (
 		  ID int(11) NOT NULL AUTO_INCREMENT,
 		  status enum('d','i') NOT NULL DEFAULT 'd', 
 		  texto text NOT NULL,
 		  secao varchar(100) NOT NULL,
 		  uri varchar(100) NOT NULL,
-		  data_cad  DATETIME DEFAULT CURRENT_TIMESTAMP,
+		  data_cad TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 		  PRIMARY KEY (ID),
 		  UNIQUE KEY ID (ID)
 		  ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -57,8 +59,10 @@ if(!isset($_GET['instalar'])){
 		 print("Tabela criada... <br>");
 		}
 		catch (PDOException $e) {
-		 $e->getMessage();
+		 echo $e->getMessage();
 		}
+
+
 	}	
 		print("Adicionando dados... <br>");
 
