@@ -1,3 +1,4 @@
+
 <?php
 
 // Menu geral
@@ -29,3 +30,25 @@ foreach ($arrayMenu as $nomeMenu => $linkMenu) {
 <?php echo $printMenu; ?>
 </ul>
 <h3 class="text-muted">Site Simples</h3>
+
+<nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Busque aqui">
+            </div>
+            <button type="submit" class="btn btn-default">Buscar</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
