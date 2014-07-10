@@ -13,7 +13,7 @@ if(!$_GET['instalar']){
 	echo "Voc&ecirc; deve criar a data base <b>site_teste</b> antes de continuar.<br> ATEN&Ccedil;&Atilde;O. Caso os dados j&aacute; exista eles ser&atilde;o removidos.<br />
 		Deseja continuar? <br>";
 	echo '<a href="?instalar=s"> Sim </a><br />';
-	echo '<a href="/"> N&atilde;o </a><br />';
+	echo '<a href="http://www.google.com"> N&atilde;o </a><br />';
 
 
 }else{
