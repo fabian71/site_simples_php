@@ -1,4 +1,10 @@
 <?php
+
+ini_set('display_errors', 1);
+ini_set('log_errors', 1);
+ini_set('error_log', dirname(__FILE__) . '/error_log.txt');
+error_reporting(E_ALL);
+
 // Acessar arquivos de imagens, js e css
 if (preg_match('/\.(?:png|jpg|jpeg|gif|css|js|txt)$/', $_SERVER["REQUEST_URI"])) {
     return false;
@@ -27,18 +33,22 @@ function rota($url){
 	
 	//carrega o home
 	if(!$pathArray[0]){
+
 		require_once('home.php');
+	
 	}elseif($pathArray[0]){
 		
-
 		if (array_key_exists($pathArray[0], $paginas)) {
+		
 			array_walk($paginas, function ($item, $key) use($pathArray){
 				if($pathArray[0] == $key){		
 					require_once($item);
 					//break;
 				}
 			});		
+
 		}else{
+			echo 'aqui';	
 			header('HTTP/1.0 404 Not Found');
 			require_once('404.php');
 		}
@@ -46,6 +56,7 @@ function rota($url){
 	
 		
 	}else{
+
 			header('HTTP/1.0 404 Not Found');
 			require_once('404.php');
 	}

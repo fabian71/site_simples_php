@@ -6,11 +6,11 @@ error_reporting(E_ALL);
 
 require_once('conexao.php');
 
-$id = 2;
+$uri = 'produtos';
 
-$sql = "select * from conteudo where ID = :id";
+$sql = "select * from $tabela where uri = :uri";
 $stmt = $con->prepare($sql);
-$stmt->bindParam(':id', $id, PDO::PARAM_STR); 
+$stmt->bindParam(':uri', $uri, PDO::PARAM_STR); 
 $stmt->execute();
 
 $conteudo = $stmt->fetch(PDO::FETCH_ASSOC);

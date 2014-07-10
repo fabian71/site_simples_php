@@ -9,6 +9,10 @@ $tabela = 'conteudo';
 try{
 	$con = new \PDO("mysql:host=$host;dbname=$dbname","$dbuser","$dbsenha");
 	$con->query("use $dbname");
+
+	$con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT );
+	$con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
+	$con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 }
 
 catch(\PDOException $e){

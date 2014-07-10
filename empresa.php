@@ -6,12 +6,14 @@ error_reporting(E_ALL);
 
 require_once('conexao.php');
 
-$id = 1;
+$uri = 'empresa';
 
-$sql = "select * from conteudo where ID = :id";
+$sql = "select * from $tabela where uri = :uri";
 $stmt = $con->prepare($sql);
-$stmt->bindParam(':id', $id, PDO::PARAM_STR); 
+$stmt->bindParam(':uri', $uri, PDO::PARAM_STR); 
 $stmt->execute();
+
+//print_r($stmt->errorInfo());
 
 $conteudo = $stmt->fetch(PDO::FETCH_ASSOC);
 

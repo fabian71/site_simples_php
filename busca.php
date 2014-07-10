@@ -12,7 +12,7 @@ if(!$_GET['q']){
 
 $q = $_GET['q'];
 
-$sql = "select * from conteudo WHERE texto LIKE :q";
+$sql = "select * from $tabela WHERE texto LIKE :q";
 $stmt = $con->prepare($sql);
 $stmt->bindValue(":q", "%$q%", PDO::PARAM_STR);
 $stmt->execute();

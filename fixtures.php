@@ -1,14 +1,19 @@
 <?php 
 
+ini_set('display_errors', 1);
+ini_set('log_errors', 1);
+ini_set('error_log', dirname(__FILE__) . '/error_log.txt');
+error_reporting(E_ALL);
+
 /*
 Cria a base de testes
 */
 require_once('conexao.php');
 
-$tabela = 'conteudo';
+//$tabela = 'conteudo';
 
 
-if(!$_GET['instalar']){
+if(!isset($_GET['instalar'])){
 
 	echo "Voc&ecirc; deve criar a data base <b>site_teste</b> antes de continuar.<br> ATEN&Ccedil;&Atilde;O. Caso os dados j&aacute; exista eles ser&atilde;o removidos.<br />
 		Deseja continuar? <br>";
