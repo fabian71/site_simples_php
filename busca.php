@@ -6,6 +6,10 @@ error_reporting(E_ALL);
 
 require_once('conexao.php');
 
+if(!$_GET['q']){
+  echo "<script>window.location.href = '/';</script>";
+}
+
 $q = $_GET['q'];
 
 $sql = "select * from conteudo WHERE texto LIKE :q";

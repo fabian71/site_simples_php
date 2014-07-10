@@ -1,6 +1,6 @@
 <?php
 // Acessar arquivos de imagens, js e css
-if (preg_match('/\.(?:png|jpg|jpeg|gif|css|js)$/', $_SERVER["REQUEST_URI"])) {
+if (preg_match('/\.(?:png|jpg|jpeg|gif|css|js|txt)$/', $_SERVER["REQUEST_URI"])) {
     return false;
 }
  
