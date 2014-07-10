@@ -1,3 +1,30 @@
+<?php 
+ini_set('display_errors', 1);
+ini_set('log_errors', 1);
+ini_set('error_log', dirname(__FILE__) . '/error_log.txt');
+error_reporting(E_ALL);
+
+require_once('conexao.php');
+
+$id = 1;
+
+$sql = "select * from conteudo where ID = :id";
+$stmt = $con->prepare($sql);
+$stmt->bindParam(':id', $id, PDO::PARAM_STR); 
+$stmt->execute();
+
+$conteudo = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if($conteudo['status'] != 'd'){
+
+  echo "<script>
+    window.location.href = '/404';
+    </script>";
+    exit;
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,18 +62,16 @@
 
     <div class="container">
       <div class="header">
-		<?php require_once('header.php');?>
+		  <?php require_once('header.php');?>
       </div>
 
 
 
       <div class="row">
-      <h2>Empresa<small> Institucional</small></h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque venenatis porta. Proin eget turpis sed est rutrum sagittis. In id erat vitae metus mollis varius. Vivamus iaculis arcu risus, at varius tortor ullamcorper et. Pellentesque quis lacinia lectus. Nam malesuada sagittis velit, a aliquam erat euismod eu. Nullam ornare id neque non posuere. Aenean placerat neque at metus aliquet cursus. Cras turpis purus, imperdiet non consectetur id, feugiat vulputate massa. Vivamus semper condimentum dictum. Sed eleifend et risus in pulvinar. Nam eu risus arcu. Mauris cursus, nibh in commodo laoreet, turpis nibh ornare leo, vitae vulputate ipsum dui scelerisque est. Donec tincidunt eros arcu, tempus rhoncus augue pharetra non. Donec vitae risus non sapien cursus tempus sed eu enim. Integer vel libero nulla.
-
-Curabitur vulputate pulvinar dolor vel rhoncus. Proin non venenatis massa, sit amet consequat nunc. Vivamus placerat dui mi. Donec pulvinar sem vestibulum turpis imperdiet auctor. Integer libero orci, vulputate ac interdum sed, convallis vel ipsum. Aenean sit amet orci ac metus malesuada porta. Vestibulum dictum purus vitae nisl commodo pulvinar. Proin imperdiet non felis mollis semper. Nulla porta tellus sit amet enim congue suscipit. Integer elementum neque vitae sapien varius gravida. Nam vestibulum tempor dolor quis vestibulum. Proin ullamcorper urna ac feugiat aliquam. Proin vitae velit ut mauris feugiat pellentesque a vitae neque. Aliquam venenatis aliquam turpis sit amet aliquam. Donec malesuada sapien id diam vestibulum, in laoreet lorem aliquam. Cras turpis purus, suscipit ac elit sed, tempus imperdiet nunc.
-
-Sed ut auctor metus, sed pulvinar nulla. Curabitur sagittis semper venenatis. Nulla dignissim ac nulla nec accumsan. Proin iaculis, orci at venenatis dictum, mi nisi dapibus massa, fringilla suscipit mauris massa id magna. Donec ac auctor lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer orci urna, vestibulum vitae sem ac, accumsan iaculis turpis. Curabitur at tempor velit, nec tincidunt est. Morbi sit amet diam nec magna fringilla tempus at sed erat. Mauris eget quam rhoncus ligula rutrum euismod ut eu ipsum. Nam justo sapien, sollicitudin in lacinia non, malesuada molestie mauris.</p>
+      <?php
+      echo nl2br($conteudo['texto']);
+      ?>  
+      
       </div>
 
       <div class="footer">

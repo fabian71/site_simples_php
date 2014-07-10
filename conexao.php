@@ -6,7 +6,8 @@ $dbuser = 'root';
 $dbsenha = 'bru59au';
 
 try{
-	$conexao = new \PDO("mysql:host=$host;dbname=$dbname","$dbuser","$dbsenha");
+	$con = new \PDO("mysql:host=$host;dbname=$dbname","$dbuser","$dbsenha");
+	$con->query("use $dbname");
 }
 
 catch(\PDOException $e){
@@ -16,7 +17,7 @@ catch(\PDOException $e){
 /*$id = 6;
 
 $sql = "select * from clientes where id = :id";
-$stmt = $conexao->prepare($sql);
+$stmt = $con->prepare($sql);
 $stmt = bindValue("id",$id);
 $stmt = execute();
 

@@ -20,7 +20,8 @@ function rota($url){
 	$paginas = ['empresa' => 'empresa.php',
 				'produtos' => 'produtos.php',
 				'servicos' => 'servicos.php',
-				'contato' => 'contato.php'
+				'contato' => 'contato.php',
+				'fixtures' => 'fixtures.php'
 				];
 	
 	//carrega o home
@@ -33,7 +34,7 @@ function rota($url){
 			array_walk($paginas, function ($item, $key) use($pathArray){
 				if($pathArray[0] == $key){		
 					require_once($item);
-					break;
+					//break;
 				}
 			});		
 		}else{
