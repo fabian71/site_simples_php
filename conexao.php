@@ -4,6 +4,7 @@ $host = 'localhost';
 $dbname = 'site_teste';
 $dbuser = 'root';
 $dbsenha = 'bru59au';
+$tabela = 'conteudo';
 
 try{
 	$con = new \PDO("mysql:host=$host;dbname=$dbname","$dbuser","$dbsenha");
@@ -14,15 +15,16 @@ catch(\PDOException $e){
 	die("Erro: ". $e->getCode().": ".$e->getMessage());
 }
 
-/*$id = 6;
+// Caso a tabela conteudo nao exista, envia para a pagina /fixtures
 
-$sql = "select * from clientes where id = :id";
-$stmt = $con->prepare($sql);
-$stmt = bindValue("id",$id);
-$stmt = execute();
+if(!strstr($_SERVER['REQUEST_URI'], '/fixtures')){
 
-$clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	// Verificando se tabela existe
+	$tableExists = $con->query("SHOW TABLES LIKE '$tabela'")->rowCount() > 0;
 
-foreach($clientes, $cliente){
-	echo $cliente['nome'].' - '.$cliente['email']."<br>";
-}*/
+	if(!$tableExists){
+		echo "<script>window.location.href = '/fixtures';</script>";
+	}
+
+}
+

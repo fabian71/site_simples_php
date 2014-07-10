@@ -40,6 +40,7 @@ if(!$_GET['instalar']){
 		  status enum('d','i') NOT NULL DEFAULT 'd', 
 		  texto text NOT NULL,
 		  secao varchar(100) NOT NULL,
+		  uri varchar(100) NOT NULL,
 		  data_cad  DATETIME DEFAULT CURRENT_TIMESTAMP,
 		  PRIMARY KEY (ID),
 		  UNIQUE KEY ID (ID)
@@ -60,14 +61,16 @@ if(!$_GET['instalar']){
 		$texto = '<h2>Empresa<small> Institucional</small></h2> 
 				<p>O Citi tem mais de 200 anos, o que reafirma a solidez e a perenidade dos negócios da organização – uma marca global com uma rede inigualável para atender a clientes em qualquer parte do mundo –, que desempenha papel central no desenvolvimento e financiamento da economia mundial.</p>';
 		$sesao = 'Empresa';
+		$uri = 'empresa';
 
 		//Inserindo
-		$sql = "INSERT INTO $tabela(texto,secao) VALUES (:texto,:secao)";
+		$sql = "INSERT INTO $tabela(texto,secao,uri) VALUES (:texto,:secao,:uri)";
 		                                          
 		$stmt = $con->prepare($sql);
 		                                              
 		$stmt->bindParam(':texto', $texto, PDO::PARAM_STR);       
-		$stmt->bindParam(':secao', $sesao, PDO::PARAM_STR); 
+		$stmt->bindParam(':secao', $sesao, PDO::PARAM_STR);
+		$stmt->bindParam(':uri', $uri, PDO::PARAM_STR); 
 		                                      
 		$stmt->execute();
 
@@ -82,14 +85,16 @@ Pois bem, tal modalidade está relacionada à grande diversidade de gêneros tex
 
 Como exemplos representativos, podemos citar uma infinidade deles: receitas culinárias, bulas de medicamentos, manuais de instrução relacionados a aparelhos eletroeletrônicos, guias e mapas rodoviários, editais de concursos públicos, manuais referentes a jogos com um todo, dentre outros.</p>';
 		$sesao = 'Produtos';
+		$uri = 'produtos';
 
 		//Inserindo
-		$sql = "INSERT INTO $tabela(texto,secao) VALUES (:texto,:secao)";
+		$sql = "INSERT INTO $tabela(texto,secao,uri) VALUES (:texto,:secao,:uri)";
 		                                          
 		$stmt = $con->prepare($sql);
 		                                              
 		$stmt->bindParam(':texto', $texto, PDO::PARAM_STR);       
 		$stmt->bindParam(':secao', $sesao, PDO::PARAM_STR); 
+		$stmt->bindParam(':uri', $uri, PDO::PARAM_STR); 
 		                                      
 		$stmt->execute();		
 
@@ -101,14 +106,16 @@ Como exemplos representativos, podemos citar uma infinidade deles: receitas culi
 
             Bem, inicialmente é preciso fazer você entender que não precisa ter medo de certos termos que aparecem em uma prova de redação, assim se aparecer o nome instrucional (ou até injuntivo) não é nada de outro mundo, basta você saber que os textos dessa natureza têm um propósito de ensinar, de dar orientações ao leitor. Alguns exemplos dos textos injuntivos: a receita, a bula, as cartilhas e também os manuais de instrução. Então, vamos ver algumas características desses textos.</p>';
 		$sesao = 'Serviços';
+		$uri = 'servicos';
 
 		//Inserindo
-		$sql = "INSERT INTO $tabela(texto,secao) VALUES (:texto,:secao)";
+		$sql = "INSERT INTO $tabela(texto,secao,uri) VALUES (:texto,:secao,:uri)";
 		                                          
 		$stmt = $con->prepare($sql);
 		                                              
 		$stmt->bindParam(':texto', $texto, PDO::PARAM_STR);       
 		$stmt->bindParam(':secao', $sesao, PDO::PARAM_STR); 
+		$stmt->bindParam(':uri', $uri, PDO::PARAM_STR); 
 		                                      
 		$stmt->execute();
 

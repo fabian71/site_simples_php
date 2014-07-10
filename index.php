@@ -21,7 +21,8 @@ function rota($url){
 				'produtos' => 'produtos.php',
 				'servicos' => 'servicos.php',
 				'contato' => 'contato.php',
-				'fixtures' => 'fixtures.php'
+				'fixtures' => 'fixtures.php',
+				'busca' => 'busca.php'
 				];
 	
 	//carrega o home

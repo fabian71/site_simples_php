@@ -31,20 +31,13 @@ foreach ($arrayMenu as $nomeMenu => $linkMenu) {
 </ul>
 <h3 class="text-muted">Site Simples</h3>
 
-<nav class="navbar navbar-default" role="navigation">
+	<nav class="navbar navbar-default" role="navigation">
       <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-          <form class="navbar-form navbar-left" role="search">
+
+        <div  id="bs-example-navbar-collapse-2">
+          <form class="navbar-form navbar-left" role="search" method="GET" action="/busca">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Busque aqui">
+              <input type="text" name="q" id="q" value="<?php echo @$_GET['q']; ?>" class="form-control" placeholder="Busque aqui">
             </div>
             <button type="submit" class="btn btn-default">Buscar</button>
           </form>
