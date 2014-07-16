@@ -31,7 +31,14 @@ if (!empty($_POST["email"])) {
 		// Verifica se a senha esta correta
 		if (password_verify($_POST["senha"], $hash)) {
 
-			echo 'vc esta logado';
+			$_SESSION['usuario'] = $_POST["email"];
+			
+			echo 'logado';
+
+			header("Location: /adm_lista");
+
+
+
 
 		} else {
 		    // Senha incorreta

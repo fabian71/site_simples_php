@@ -30,7 +30,9 @@ function rota($url){
 				'fixtures' => 'fixtures.php',
 				'busca' => 'busca.php',
 				'admin' => 'admin/index.php',
-				'autentica' => 'admin/autentica.php'
+				'autentica' => 'admin/autentica.php',
+				'adm_lista' => 'admin/lista.php',
+				'adm_sair' => 'admin/sair.php'
 				];
 
 				//print_r($pathArray);
