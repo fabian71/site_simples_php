@@ -31,7 +31,6 @@ $retorno = '';
 if($num_rows > 0){
 
 	foreach ($conteudo as $cada_conteudo) {
-		echo $cada_conteudo['ID']."<br>";
 		$retorno .= '<tr>
                   <td>'.$cada_conteudo['ID'].'</td>
                   <td>'.$cada_conteudo['secao'].'</td>
@@ -116,9 +115,9 @@ if($num_rows > 0){
             <li><a href="/admin">Help</a></li>
         	-->
           </ul>
-          <form class="navbar-form navbar-right">
+          <!-- <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
-          </form>
+          </form> -->
         </div>
       </div>
     </div>

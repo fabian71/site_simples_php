@@ -16,6 +16,45 @@ if(!isset($_SESSION['usuario'])){
 
 }
 
+// Edita 
+if(isset($_POST['ID'])){
+
+    $sql = "UPDATE conteudo SET texto = :texto where ID = :ID";
+    $stmt = $con->prepare($sql);
+    $stmt->bindParam(':texto', $_POST['texto'], PDO::PARAM_STR); 
+    $stmt->bindParam(':ID', $_POST['ID'], PDO::PARAM_STR); 
+    $stmt->execute();
+
+
+}
+
+
+if(!isset($_GET['ID'])){
+  // sessao invalida
+  header("Location: /admin");
+  exit;
+
+}
+
+// Carrega
+$sql = "select * from conteudo where ID = :ID";
+$stmt = $con->prepare($sql);
+$stmt->bindParam(':ID', $_GET['ID'], PDO::PARAM_STR); 
+$stmt->execute();
+$conteudo = $stmt->fetch(PDO::FETCH_ASSOC);
+$num_rows = count($conteudo);
+
+
+if($num_rows == 0){
+  header("Location: /admin");
+}
+
+
+
+
+
+
+
 
 ?>
 
@@ -33,14 +72,23 @@ if(!isset($_SESSION['usuario'])){
     <title>Administração</title>
 	
     
+    <!-- wysihtml5 -->
+    <link rel="stylesheet" type="text/css" href="js/wysihtml5/bootstrap-wysihtml5.css"></link>
+
+
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- wysihtml5 -->
+    <link rel="stylesheet" type="text/css" href="js/wysihtml5/prettify.css"></link>
 
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/jumbotron-narrow.css" rel="stylesheet">
+    
+
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -78,9 +126,9 @@ if(!isset($_SESSION['usuario'])){
             <li><a href="/admin">Help</a></li>
         	-->
           </ul>
-          <form class="navbar-form navbar-right">
+          <!-- <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
-          </form>
+          </form> -->
         </div>
       </div>
     </div>
@@ -98,7 +146,19 @@ if(!isset($_SESSION['usuario'])){
 
 
           <h2 class="sub-header">Editar Conteúdo</h2>
-          editando conteudo
+
+           <!-- form -->
+            <form method="post" role="form">
+              <input type="hidden" name="ID" value="<?php echo $conteudo['ID']?>">
+              <div class="form-group">
+                <textarea id="texto" name="texto" class="textarea" placeholder="Entre com o texto ..." style="width: 810px; height: 200px"><?php echo $conteudo['texto']?></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-default">Editar</button>
+            </form>
+
+           <!-- and form -->
+
         </div>
       </div>
     </div>
@@ -106,10 +166,19 @@ if(!isset($_SESSION['usuario'])){
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="js/wysihtml5/wysihtml5-0.3.0.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     
     <script src="js/bootstrap.min.js"></script>
 
     <script src="assets/js/docs.min.js"></script>
+
+    <script src="js/wysihtml5/bootstrap-wysihtml5.js"></script>
+
+    <script>
+      $('.textarea').wysihtml5();
+    </script>
   </body>
 </html>
