@@ -29,18 +29,22 @@ function rota($url){
 				'contato' => 'contato.php',
 				'fixtures' => 'fixtures.php',
 				'busca' => 'busca.php',
-				'admin' => 'admin/index.php'
+				'admin' => 'admin/index.php',
+				'autentica' => 'admin/autentica.php'
 				];
+
+				//print_r($pathArray);
 	
 	//carrega o home
 	if(!$pathArray[0]){
 
 		require_once('home.php');
 	
-	}elseif($pathArray[0]){
+	/*}elseif(($pathArray[0]) AND (!@$pathArray[1])){*/
+	}elseif(($pathArray[0])){
 		
 		if (array_key_exists($pathArray[0], $paginas)) {
-		
+			//print_r($paginas);
 			array_walk($paginas, function ($item, $key) use($pathArray){
 				if($pathArray[0] == $key){		
 					require_once($item);
@@ -56,6 +60,23 @@ function rota($url){
 
 	
 		
+/*	}elseif(($pathArray[0] == 'admin')){
+		//echo 'carrega '.$pathArray[1];
+
+		//print_r($pathArray[1]);
+
+		if (array_key_exists($pathArray[0], $paginas)) {
+			print_r($paginas);
+			array_walk($paginas, function ($item, $key) use($pathArray){
+				
+				if($pathArray[0] == $key){		
+					//require_once($item);
+					//echo $item;
+				}
+			});		
+
+		}*/
+
 	}else{
 
 			header('HTTP/1.0 404 Not Found');

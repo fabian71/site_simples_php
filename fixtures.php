@@ -86,7 +86,7 @@ if(!isset($_GET['instalar'])){
 
 		//Adicionado usuarios adm
 		$email = 'teste@teste.com';
-		$senha = "123456";
+		$senha = '12345678';
 		$senha_crypt = password_hash($senha,PASSWORD_DEFAULT);
 
 		//Inserindo

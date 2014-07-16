@@ -6,6 +6,8 @@ error_reporting(E_ALL);
 
 require_once('conexao.php');
 
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,14 +51,14 @@ require_once('conexao.php');
 
     <div class="container">
 
-      <form class="form-signin" role="form">
+      <form class="form-signin" role="form" method="post" action="/autentica">
         <h2 class="form-signin-heading">Área restrita</h2>
         <input name="email" id="email" type="email" class="form-control" placeholder="Email" required autofocus>
         <input name="senha" id="senha" type="password" class="form-control" placeholder="Password" required>
         <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Continuar logado
-          </label>
+<!--           <label>
+  <input type="checkbox" value="remember-me"> Continuar logado
+</label> -->
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
       </form>
