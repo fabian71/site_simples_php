@@ -41,7 +41,7 @@ if(!isset($_GET['instalar'])){
 		print("Criando a tabela... <br>");
 
 
-		// Criando a tabela
+		// Criando a tabela 
 		$q="CREATE TABLE $tabela (
 		  ID int(11) NOT NULL AUTO_INCREMENT,
 		  status enum('d','i') NOT NULL DEFAULT 'd', 
@@ -62,8 +62,44 @@ if(!isset($_GET['instalar'])){
 		 echo $e->getMessage();
 		}
 
+		// Criando a tabela users
+		$q="CREATE TABLE users (
+		  ID int(11) NOT NULL AUTO_INCREMENT,
+		  status enum('d','i') NOT NULL DEFAULT 'd',
+		  email varchar(160) NOT NULL,
+		  senha char(60) NOT NULL,
+		  data_cad TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+		  PRIMARY KEY (ID),
+		  UNIQUE KEY ID (ID)
+		  ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+		";
+
+		try {
+		 $con->exec($q);
+		 print("Tabela criada users... <br>");
+		}
+		catch (PDOException $e) {
+		 echo $e->getMessage();
+		}
 
 	}	
+
+		//Adicionado usuarios adm
+		$email = 'teste@teste.com';
+		$senha = "123456";
+		$senha_crypt = password_hash($senha,PASSWORD_DEFAULT);
+
+		//Inserindo
+		$sql = "INSERT INTO users(email,senha) VALUES (:email,:senha)";
+
+		$stmt = $con->prepare($sql);
+		                                              
+		$stmt->bindParam(':email', $email, PDO::PARAM_STR);       
+		$stmt->bindParam(':senha', $senha_crypt, PDO::PARAM_STR);
+		                                      
+		$stmt->execute();
+
+
 		print("Adicionando dados... <br>");
 
 		// Empresa
