@@ -16,44 +16,6 @@ if(!isset($_SESSION['usuario'])){
 
 }
 
-$sql = "select * from conteudo ORDER BY ID Desc";
-$stmt = $con->prepare($sql);
-//$stmt->bindParam(':uri', $uri, PDO::PARAM_STR); 
-$stmt->execute();
-
-//print_r($stmt->errorInfo());
-
-$conteudo = $stmt->fetchALL(PDO::FETCH_ASSOC);
-$num_rows = count($conteudo);
-
-$retorno = '';
-
-if($num_rows > 0){
-
-	foreach ($conteudo as $cada_conteudo) {
-		echo $cada_conteudo['ID']."<br>";
-		$retorno .= '<tr>
-                  <td>'.$cada_conteudo['ID'].'</td>
-                  <td>'.$cada_conteudo['secao'].'</td>
-                  <td>'.$cada_conteudo['uri'].'</td>
-                  <td>
-                  	<a class="btn btn-default btn-sm" href="/adm_edita?ID='.$cada_conteudo['ID'].'"><span class="glyphicon glyphicon-star"></span> Editar</a>
-				  </td>
-                  </tr>';
-	}
-
-}else{
-	$retorno = '<tr>
-                  <td>Nenhum registro encontrado.</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>';
-}
-
-
-
-
 
 ?>
 
@@ -136,21 +98,7 @@ if($num_rows > 0){
 
 
           <h2 class="sub-header">Editar Conteúdo</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Secao</th>
-                  <th>uri</th>
-                  <th>Editar</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php echo $retorno; ?>
-              </tbody>
-            </table>
-          </div>
+          editando conteudo
         </div>
       </div>
     </div>

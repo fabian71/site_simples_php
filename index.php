@@ -32,7 +32,8 @@ function rota($url){
 				'admin' => 'admin/index.php',
 				'autentica' => 'admin/autentica.php',
 				'adm_lista' => 'admin/lista.php',
-				'adm_sair' => 'admin/sair.php'
+				'adm_sair' => 'admin/sair.php',
+				'adm_edita' => 'admin/edita.php'
 				];
 
 				//print_r($pathArray);
