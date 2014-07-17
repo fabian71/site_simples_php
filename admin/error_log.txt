@@ -1,2 +1,0 @@
-[16-Jul-2014 02:42:40 America/Sao_Paulo] PHP Notice:  Undefined index: usuario in /media/fabiano/6E16D83D16D8084B/trabalho/estudos/site_simples_php/admin/lista.php on line 11
-[16-Jul-2014 02:43:11 America/Sao_Paulo] PHP Notice:  Undefined index: usuario in /media/fabiano/6E16D83D16D8084B/trabalho/estudos/site_simples_php/admin/lista.php on line 11
