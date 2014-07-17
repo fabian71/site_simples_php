@@ -3,8 +3,16 @@ ini_set('display_errors', 1);
 ini_set('log_errors', 1);
 ini_set('error_log', dirname(__FILE__) . '/error_log.txt');
 error_reporting(E_ALL);
+session_start();
 
 require_once('conexao.php');
+
+if(isset($_SESSION['usuario'])){
+	// sessao j'a existe
+	header("Location: /adm_lista");
+}
+
+
 
 ?>
 <!DOCTYPE html>
@@ -15,15 +23,18 @@ require_once('conexao.php');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <base href="/">
+    <base href="../">
     <link rel="icon" href="favicon.ico">
 
-    <title>Site Simples</title>
+    <title>Administração</title>
 	
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/signin.css" rel="stylesheet">    
 
     <!-- Custom styles for this template -->
     <link href="css/jumbotron-narrow.css" rel="stylesheet">
@@ -42,46 +53,21 @@ require_once('conexao.php');
     <![endif]-->
   </head>
 
-  <body>
+<body>
 
     <div class="container">
-      <div class="header">
-		<?php require_once('header.php');?>
-      </div>
 
-      <div class="jumbotron">
-        <h1>O primeiro teste</h1>
-        <p class="lead">Aqui esta sento criado o primeiro site para o projeto code.education</p>
-        <p><a class="btn btn-lg btn-success" href="/contato" role="button">Entre em contato</a></p>
-      </div>
-
-      <div class="row marketing">
-        <div class="col-lg-6">
-          <h4>Subheading</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque venenatis porta. Proin eget turpis sed est rutrum sagittis. In id erat vitae metus mollis varius.</p>
-
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+      <form class="form-signin" role="form" method="post" action="/autentica">
+        <h2 class="form-signin-heading">Área restrita</h2>
+        <input name="email" id="email" type="email" class="form-control" placeholder="Email" required autofocus>
+        <input name="senha" id="senha" type="password" class="form-control" placeholder="Password" required>
+        <div class="checkbox">
+<!--           <label>
+  <input type="checkbox" value="remember-me"> Continuar logado
+</label> -->
         </div>
-
-        <div class="col-lg-6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-        </div>
-      </div>
-
-      <div class="footer">
-       <?php require_once('footer.php'); ?>
-      </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+      </form>
 
     </div> <!-- /container -->
 
@@ -90,4 +76,5 @@ require_once('conexao.php');
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
   </body>
+
 </html>
